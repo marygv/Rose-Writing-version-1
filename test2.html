@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Rose </title>
+    <style>
+      p{
+        font-family: Courier;
+        text-align: center;
+        font-size: 14px;
+      }
+
+      h1{
+        color: #1d2528;
+        font-family: Impact;
+        font-size: 70px;
+        text-align: center;
+      }
+
+      h2{
+        font-size: 20px;
+        color: #95b7c4;
+        font-family: serif;
+        text-align:center;
+        margin-bottom: 20px;
+        font-style: italic;
+      }
+
+
+      img{
+        display:block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 20%;
+      }
+
+      textarea{
+        margin: auto;
+        width: 100%;
+      }
+
+      html {
+        background: linear-gradient(to bottom, #c0e8f7 0%, #f7fffe 100%);
+      }
+    </style>
+
+  </head>
+  <body>
+
+    <h1>Rose</h1>
+    <h2>Moving Writer's Block Aside</h2>
+    <p> You don't know what to write. It's because you fear what you can come up with. </p>
+    <p> Just write and don't stop. Something will grow out of it (literally). </p>
+    <p> </p>
+    <p> Ready to Rise to the challenge? Type in your character count below <p>
+
+  <input type="text" id="myText" value="">
+
+  <button onclick="myFunction()">Submit</button>
+
+  <p id="demo"></p>
+
+  <script>
+  function myFunction() {
+      var x = document.getElementById("myText").value;
+      document.getElementById("demo").innerHTML = "Great, now start typing below!";
+  }
+  </script>
+
+
+  <p><canvas id="myCanvas" width="2000" height="250">
+    </canvas> </p>
+
+  <p id = "LeftToWrite"> Characters left to write: <p>
+  <div> 
+  <div id="amountCharLeft" align = "center"></div>
+  <div id="barbox"><div id="bar"></div></div>
+  </div>
+
+
+  <textarea id="contentbox"
+      rows = "20"
+      cols = "80"></textarea>
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/
+ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+
+  <script type="text/javascript">
+  
+  $(document).ready(function()
+  {
+    $("#contentbox").keyup(function()
+    {
+
+      var canvas = document.getElementById("myCanvas");
+      var ctx = canvas.getContext("2d");
+
+
+      function grass() {
+        var canvas = document.getElementById("myCanvas");
+        var ctx = canvas.getContext("2d");
+        var colors = ["#43845b", "#47ad8d", "#81c16e", "#4fa52c", "#bfe886"];
+        var height = box.length;
+
+        for (i = 0; i<5; i++) {
+          ctx.strokeStyle = colors[i];
+          var seeding = Math.floor(Math.random() * 2000);
+          ctx.beginPath();
+          ctx.moveTo(seeding, 250)
+          var length = Math.floor(Math.random() * Math.log(height+1)*15);
+          ctx.lineTo(seeding, 250-length);
+          ctx.stroke();
+        }
+      }
+      function stem() {
+        var seeding = Math.floor(Math.random() * 1400);
+        ctx.beginPath();
+        ctx.moveTo(seeding, 250)
+        var length = Math.floor(Math.random() *140);
+        ctx.lineTo(seeding, 200-length);
+        ctx.stroke();
+        flower(seeding,length)
+      }
+      function flower(x,y) {
+        var c = document.getElementById("myCanvas");
+        var ctx = c.getContext("2d");
+        var seeding = Math.floor(Math.random() * 2000);
+        ctx.beginPath();
+        var petal = Math.floor(Math.random() * 20);
+        var color = Math.floor(Math.random() * 3);
+        var colorlist = ["#ffec82", "#fffdf7", "#ffc1e0"]
+        ctx.arc(x, 200-y, 20+petal, Math.PI*3/2, 7/2 * Math.PI);
+        ctx.fillStyle = colorlist[color]
+        ctx.fill();
+
+      }
+
+      var box=$(this).val();
+      var main = box.length *100;
+      var value= (main / 100);
+      var count= document.getElementById("myText").value - box.length;
+      var goalAmountWords = document.getElementById("myText").value;
+      var ongoing = false;
+
+      if (box.length >= goalAmountWords){
+        $('#amountCharLeft').html(count);
+        $('#bar').animate(
+            {
+              "width": value+'%',
+            }, 1);
+
+       
+
+        $('#LeftToWrite').html("Congratulations! You met your character count goal!");
+
+        }
+
+        if (box.length == goalAmountWords){
+             stem();
+        }
+
+       if (box.length >= Math.round(goalAmountWords*(5/6)) && box.length < goalAmountWords)
+          {
+              $('#amountCharLeft').html(count);
+              $('#bar').animate(
+                  {
+                    "width": value+'%',
+                  }, 1);
+
+            
+          }
+
+         if (box.length == Math.round(goalAmountWords*(5/6))){
+             stem();
+        }
+
+       if (box.length >= Math.round(goalAmountWords*(4/6)) && box.length < Math.round(goalAmountWords*(5/6)))
+          {
+              $('#amountCharLeft').html(count);
+              $('#bar').animate(
+                  {
+                    "width": value+'%',
+                  }, 1);
+
+          }
+
+       if (box.length == Math.round(goalAmountWords*(4/6))){
+             stem();
+        }
+
+       if (box.length >= Math.round(goalAmountWords*(3/6)) && box.length < Math.round(goalAmountWords*(4/6)))
+          {
+              $('#amountCharLeft').html(count);
+              $('#bar').animate(
+                  {
+                    "width": value+'%',
+                  }, 1);
+
+
+          }
+
+       if (box.length == Math.round(goalAmountWords*(3/6))){
+             stem();
+        }
+
+       if (box.length >= Math.round(goalAmountWords*(2/6)) && box.length < Math.round(goalAmountWords*(3/6)))
+          {
+              $('#amountCharLeft').html(count);
+              $('#bar').animate(
+                  {
+                    "width": value+'%',
+                  }, 1);
+    
+
+          }
+
+       if (box.length == Math.round(goalAmountWords*(2/6))){
+             stem();
+        }
+
+      if (box.length >= Math.round(goalAmountWords*(1/6)) && box.length < Math.round(goalAmountWords*(2/6)))
+          {
+              $('#amountCharLeft').html(count);
+              $('#bar').animate(
+                  {
+                    "width": value+'%',
+                  }, 1);
+
+    
+          }
+
+
+      if (box.length < Math.round(goalAmountWords*(1/6)) && box.length >= 0){
+        $('#amountCharLeft').html(count);
+        $('#bar').animate(
+            {
+              "width": value+'%',
+            }, 1);
+
+
+      }
+
+      if (box.length >= 1) {
+        grass();
+        var delay = Math.floor(Math.random() * 3000);
+        setTimeout(grass, delay);
+        
+      }
+            if (box.length % 1000 == 0) {
+        var delay = Math.floor(Math.random() * 100);
+        setTimeout(stem, delay);;
+      }
+
+    });
+
+  });
+
+
+  </script>
+
+  </body>
+</html>
+
