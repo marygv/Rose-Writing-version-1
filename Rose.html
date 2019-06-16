@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Rose </title>
+    <style>
+      p{
+        font-family: Arial;
+        text-align: center;
+      }
+
+      h1{
+        font-family: Arial;
+        text-align: center;
+      }
+
+
+      img{
+        display:block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 20%;
+      }
+
+      textarea{
+        margin: auto;
+        width: 100%;
+      }
+
+      html {
+        background-color:#D3EEFF;
+      }
+    </style>
+
+  </head>
+  <body>
+
+    <h1>Rose: Moving Writer's Block Aside </h1>
+    <p> You don't know what to write. It's because you fear what you can come up with. </p>
+    <p> Just write and don't stop. Something will grow out of it (literally). </p>
+    <p> </p>
+    <p> Type in your character count below <p>
+
+  <input type="text" id="myText" value="">
+
+  <button onclick="myFunction()">Submit</button>
+
+  <p id="demo"></p>
+
+  <script>
+  function myFunction() {
+      var x = document.getElementById("myText").value;
+      document.getElementById("demo").innerHTML = "Great, now start typing below!";
+  }
+  </script>
+
+
+  <img id="img" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/5ff5554d-d030-40f8-866a-54b3143b9160/dd9fthd-be2033c1-008b-4518-8fb1-92cbdec6a928.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzVmZjU1NTRkLWQwMzAtNDBmOC04NjZhLTU0YjMxNDNiOTE2MFwvZGQ5ZnRoZC1iZTIwMzNjMS0wMDhiLTQ1MTgtOGZiMS05MmNiZGVjNmE5MjguZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.KKm0W66WxZvAs3yM4gEF53a7hR-Qn7JK6VGAPl-ZW3I">
+
+  <p id = "LeftToWrite"> Characters left to write: <p>
+  <div> 
+  <div id="amountCharLeft" align = "center"></div>
+  <div id="barbox"><div id="bar"></div></div>
+  </div>
+  <textarea id="contentbox"
+      rows = "20"
+      cols = "80"></textarea>
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/
+ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+
+  <script type="text/javascript">
+  
+  $(document).ready(function()
+  {
+    $("#contentbox").keyup(function()
+    {
+      var box=$(this).val();
+      var main = box.length *100;
+      var value= (main / 100);
+      var count= document.getElementById("myText").value - box.length;
+      var goalAmountWords = document.getElementById("myText").value
+
+      if (box.length >= goalAmountWords){
+        $('#amountCharLeft').html(count);
+        $('#bar').animate(
+            {
+              "width": value+'%',
+            }, 1);
+
+        document.getElementById("img").src = "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/5ff5554d-d030-40f8-866a-54b3143b9160/dd9ftiu-ad1426e5-b4bd-4b78-a179-f185e866e86e.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzVmZjU1NTRkLWQwMzAtNDBmOC04NjZhLTU0YjMxNDNiOTE2MFwvZGQ5ZnRpdS1hZDE0MjZlNS1iNGJkLTRiNzgtYTE3OS1mMTg1ZTg2NmU4NmUuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.90e5h05hjCQaIUSgJmXmsnZRl4M7F2we5faIkvNnOfE";
+
+        $('#LeftToWrite').html("Congratulations! You met your character count goal!");
+
+        }
+
+       if (box.length >= Math.round(goalAmountWords*(5/6)) && box.length < goalAmountWords)
+          {
+              $('#amountCharLeft').html(count);
+              $('#bar').animate(
+                  {
+                    "width": value+'%',
+                  }, 1);
+
+              document.getElementById("img").src = "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/5ff5554d-d030-40f8-866a-54b3143b9160/dd9ftis-32698f8d-0345-4321-9725-930b505d0c73.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzVmZjU1NTRkLWQwMzAtNDBmOC04NjZhLTU0YjMxNDNiOTE2MFwvZGQ5ZnRpcy0zMjY5OGY4ZC0wMzQ1LTQzMjEtOTcyNS05MzBiNTA1ZDBjNzMuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.3_xdPN78vLbBT5vrWyVd999_eyv887CmGL7NrnVw8XQ";
+
+              $('#LeftToWrite').html("Characters left to write:");
+
+          }
+
+       if (box.length >= Math.round(goalAmountWords*(4/6)) && box.length < Math.round(goalAmountWords*(5/6)))
+          {
+              $('#amountCharLeft').html(count);
+              $('#bar').animate(
+                  {
+                    "width": value+'%',
+                  }, 1);
+
+              document.getElementById("img").src = "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/5ff5554d-d030-40f8-866a-54b3143b9160/dd9ftig-589e3671-6606-4458-90fa-adb92456ed05.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzVmZjU1NTRkLWQwMzAtNDBmOC04NjZhLTU0YjMxNDNiOTE2MFwvZGQ5ZnRpZy01ODllMzY3MS02NjA2LTQ0NTgtOTBmYS1hZGI5MjQ1NmVkMDUuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.sfJukzAGrnemZPV3fb1xKtyLjiz2D5pcDBMUw2TGgD4";
+          }
+
+       if (box.length >= Math.round(goalAmountWords*(3/6)) && box.length < Math.round(goalAmountWords*(4/6)))
+          {
+              $('#amountCharLeft').html(count);
+              $('#bar').animate(
+                  {
+                    "width": value+'%',
+                  }, 1);
+
+              document.getElementById("img").src = "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/5ff5554d-d030-40f8-866a-54b3143b9160/dd9ftic-9a50145a-40e1-4188-b0bb-894817b6b9aa.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzVmZjU1NTRkLWQwMzAtNDBmOC04NjZhLTU0YjMxNDNiOTE2MFwvZGQ5ZnRpYy05YTUwMTQ1YS00MGUxLTQxODgtYjBiYi04OTQ4MTdiNmI5YWEuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.jgWw5CZ8E8VwG1NJkVZfC1Qps7nO2xM4ml-89ZvAbqM";
+          }
+
+       if (box.length >= Math.round(goalAmountWords*(2/6)) && box.length < Math.round(goalAmountWords*(3/6)))
+          {
+              $('#amountCharLeft').html(count);
+              $('#bar').animate(
+                  {
+                    "width": value+'%',
+                  }, 1);
+
+              document.getElementById("img").src = "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/5ff5554d-d030-40f8-866a-54b3143b9160/dd9fti3-850c214e-ddb1-4a62-99a2-7d1ba9b7a1f2.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzVmZjU1NTRkLWQwMzAtNDBmOC04NjZhLTU0YjMxNDNiOTE2MFwvZGQ5ZnRpMy04NTBjMjE0ZS1kZGIxLTRhNjItOTlhMi03ZDFiYTliN2ExZjIuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.FLwwkKAuNnVbiA19ruQW8_Fy8spsC6nabSdgc0YDgx0";
+          }
+
+      if (box.length >= Math.round(goalAmountWords*(1/6)) && box.length < Math.round(goalAmountWords*(2/6)))
+          {
+              $('#amountCharLeft').html(count);
+              $('#bar').animate(
+                  {
+                    "width": value+'%',
+                  }, 1);
+
+              document.getElementById("img").src = "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/5ff5554d-d030-40f8-866a-54b3143b9160/dd9fthv-499566ca-dc54-4cac-afd7-aa9ede690b70.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzVmZjU1NTRkLWQwMzAtNDBmOC04NjZhLTU0YjMxNDNiOTE2MFwvZGQ5ZnRodi00OTk1NjZjYS1kYzU0LTRjYWMtYWZkNy1hYTllZGU2OTBiNzAuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.h-wFEJqN-OVfeGlieiOcB7477NT9AW_1-tMSV7JWyio";
+          }
+
+
+      if (box.length < Math.round(goalAmountWords*(1/6)) && box.length >= 0){
+        $('#amountCharLeft').html(count);
+        $('#bar').animate(
+            {
+              "width": value+'%',
+            }, 1);
+
+        document.getElementById("img").src = "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/5ff5554d-d030-40f8-866a-54b3143b9160/dd9fthd-be2033c1-008b-4518-8fb1-92cbdec6a928.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzVmZjU1NTRkLWQwMzAtNDBmOC04NjZhLTU0YjMxNDNiOTE2MFwvZGQ5ZnRoZC1iZTIwMzNjMS0wMDhiLTQ1MTgtOGZiMS05MmNiZGVjNmE5MjguZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.KKm0W66WxZvAs3yM4gEF53a7hR-Qn7JK6VGAPl-ZW3I";
+      }
+    });
+
+  });
+
+  </script>
+
+  </body>
+</html>
+
